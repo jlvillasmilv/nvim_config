@@ -48,6 +48,7 @@ let mapleader=" "
 nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
+nmap <Leader>l :set wrap linebreak nolist<CR>
 
 
 let $FZF_DEFAULT_OPTS='--layout=reverse'
