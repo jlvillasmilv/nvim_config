@@ -61,7 +61,7 @@ let g:fzf_action = {
   \}
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
-
+au BufNewFile,BufRead *.ejs set filetype=html
 
 let g:UltiSnipsSnippetDirectories=[$HOME.'/nvim/plugged/ultisnips']
 let g:UltiSnipsExpandTrigger="<tab>"
