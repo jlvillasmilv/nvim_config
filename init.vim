@@ -1,13 +1,29 @@
+
+"*****************************************************************************
+"" Basic Setup
+"*****************************************************************************"
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set binary
+
 " opciones agregadas a nvim
 set mouse=a
 set numberwidth=1
 set clipboard=unnamed
-syntax enable
-set ruler
-set encoding=UTF-8
 set sw=2
 
+"*****************************************************************************
+"" Visual Settings
+"*****************************************************************************
+
 " UI Config {{{
+syntax on
+set ruler
+set number
+
 set hidden
 set number                   " show line number
 set showcmd                  " show command in bottom bar
@@ -51,6 +67,7 @@ nmap <Leader>q :q<CR>
 nmap <Leader>l :set wrap linebreak nolist<CR>
 
 
+
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 nnoremap <C-p> :FZF<CR>
@@ -61,7 +78,7 @@ let g:fzf_action = {
   \}
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 
-au BufNewFile,BufRead *.ejs set filetype=html
+au BufNewFile,BufRead *.hbs set filetype=html
 
 let g:UltiSnipsSnippetDirectories=[$HOME.'/nvim/plugged/ultisnips']
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -69,24 +86,47 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
+
+
+"" NERDTree configuration
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+"let g:NERDTreeWinSize = 50
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden = 1
 let NERDTreeStatusline = ''
 let NERDTreeQuitOnOpen = 1
+
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Toggle
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
-"let g:coc_node_path = '/d/laragon/bin/nodejs/node-v12/node'
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+"let g:coc_node_path = '/d/laragon/bin/nodejs/node-v14/node'
 
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 " No mostrar en ciertos tipos de buffers y archivos
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
-let g:python3_host_prog='/c/miniconda3/envs/pynvim/python' 
+"let g:python3_host_prog='/D/Python/Python39' 
 " Lightlane
 let g:lightline = {
       \ 'active': {
