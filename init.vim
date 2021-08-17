@@ -22,8 +22,6 @@ set sw=2
 " UI Config {{{
 syntax on
 set ruler
-set number
-
 set hidden
 set number                   " show line number
 set showcmd                  " show command in bottom bar
