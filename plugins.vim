@@ -15,7 +15,8 @@ Plug 'machakann/vim-sandwich'
 " autocomplete
 Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier','coc-phpls']
+
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier','coc-phpls','coc-tsserver','coc-tabnine']
 
 " IDE 
 Plug 'editorconfig/editorconfig-vim'
