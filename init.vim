@@ -41,13 +41,13 @@ set smartindent
 set autoindent
 set copyindent      " copy indent from the previous line
 " }}} Spaces & Tabs
-
+let mapleader=" "
 set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
 
 " fix indentation
 nnoremap <leader>i mzgg=G`z<CR>
 
-so  ~/AppData/Local/nvim/plugins.vim
+so ~/AppData/Local/nvim/plugins.vim
 
 " Enable theming support
 if (has("termguicolors"))
@@ -56,14 +56,17 @@ endif
 
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
-
-let mapleader=" "
+highlight Normal ctermbg=NONE
 
 nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader>l :set wrap linebreak nolist<CR>
 
+" plugs
+map <Leader>nt :NERDTreeFind<CR>
+map <Leader>p :Files<CR>
+map <Leader>ag :Ag<CR>
 
 
 let $FZF_DEFAULT_OPTS='--layout=reverse'
@@ -84,21 +87,18 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-
-
 "" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-"let g:NERDTreeWinSize = 50
+autocmd vimenter * NERDTree "Abre automáticamente Nerdtree
+let g:NERDTreeChDirMode=1
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
-let NERDTreeShowHidden = 1
-let NERDTreeStatusline = ''
-let NERDTreeQuitOnOpen = 1
+let NERDTreeDirArrows=1
+let NERDTreeShowLineNumbers=1
+let NERDTreeMapOpenInTab='\t'
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -117,14 +117,20 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-"let g:coc_node_path = '/d/laragon/bin/nodejs/node-v14/node'
+" tmux navigator
+nnoremap <silent> <Leader><C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <Leader><C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <Leader><C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <Leader><C-l> :TmuxNavigateRight<cr>
+
+"let g:coc_node_path = '/E/laragon/bin/nodejs/node-v14/node'
 
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 " No mostrar en ciertos tipos de buffers y archivos
 let g:indentLine_fileTypeExclude = ['text', 'sh', 'help', 'terminal']
 let g:indentLine_bufNameExclude = ['NERD_tree.*', 'term:.*']
-"let g:python3_host_prog='/D/Python/Python39' 
+"let g:python3_host_prog='/E/Python/Python39' 
 " Lightlane
 let g:lightline = {
       \ 'active': {
