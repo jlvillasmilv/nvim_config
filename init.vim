@@ -68,9 +68,7 @@ map <Leader>nt :NERDTreeFind<CR>
 map <Leader>p :Files<CR>
 map <Leader>ag :Ag<CR>
 
-
 let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -85,7 +83,6 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/nvim/plugged/ultisnips']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 "" NERDTree configuration
 autocmd vimenter * NERDTree "Abre automáticamente Nerdtree
