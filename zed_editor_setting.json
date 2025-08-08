@@ -1,0 +1,91 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "edit_predictions": {
+    "disabled_globs": [],
+    "mode": "eager",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
+    "model_parameters": [],
+    "always_allow_tool_actions": true
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "icon_theme": "Material Icon Theme",
+  "vim_mode": false,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Gruvbox Dark Hard"
+  },
+  "languages": {
+    "PHP": {
+      "language_servers": ["intelephense", "!phpactor"]
+    },
+    "JavaScript": {
+      "language_servers": ["eslint", "!tsserver"]
+    }
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "cursor_blink": true,
+  "soft_wrap": "editor_width",
+  "format_on_save": "off",
+  "file_types": {
+    "Blade": ["*.blade.php"]
+  },
+  "lsp": {
+    "phpactor": {
+      "initialization_options": {}
+    },
+    "intelephense": {
+      "settings": {
+        "maxMemory": 256,
+        "intelephense.telemetry.enabled": false,
+        "intelephense.diagnostics.undefinedProperties": false,
+        "enable": true,
+        "exclude": [
+          "**/.git/**",
+          "**/node_modules/**",
+          "**/vendor/**",
+          "**/vendors/**"
+        ],
+        "format": {
+          "enable": true
+        },
+        "codeAction": {
+          "enable": true
+        },
+        "diagnostics": {
+          "enable": false,
+          "undefinedProperties": true
+        }
+      }
+    }
+  }
+}
