@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "show_edit_predictions": false,
   "edit_predictions": {
     "disabled_globs": [],
     "mode": "eager",
@@ -32,6 +33,12 @@
     "metrics": false,
     "diagnostics": false
   },
+  "file_scan_exclusions": [
+    ".git/",
+    "vendor/",
+    "node_modules/",
+    "tests/fixtures/"
+  ],
   "icon_theme": "Material Icon Theme",
   "vim_mode": false,
   "ui_font_size": 16,
@@ -43,10 +50,15 @@
   },
   "languages": {
     "PHP": {
-      "language_servers": ["intelephense", "!phpactor"]
+      "show_edit_predictions": true,
+      "language_servers": ["!intelephense","phpactor"]
     },
     "JavaScript": {
-      "language_servers": ["eslint", "!tsserver"]
+      "language_servers": ["eslint"],
+      "enable_language_server": false
+    },
+    "CSS": {
+      "enable_language_server": false
     }
   },
   "indent_guides": {
@@ -60,14 +72,23 @@
     "Blade": ["*.blade.php"]
   },
   "lsp": {
-    "phpactor": {
-      "initialization_options": {}
+    "phpactor":{
+      "initialization_options": {
+        "language_server_phpstan.mem_limit":"1G",
+        "language_server.diagnostics_on_update": false,
+        "language_server_highlight.enabled": false,
+        "indexer.exclude_patterns": ["/vendor/**/Tests/**/*","/vendor/**/tests/**/*","/var/cache/**/*","/vendor/composer/**/*"]
+      }
     },
     "intelephense": {
       "settings": {
+        "environment": {
+          "phpVersion": "8.2.0"
+        },
         "maxMemory": 256,
-        "intelephense.telemetry.enabled": false,
-        "intelephense.diagnostics.undefinedProperties": false,
+        "telemetry.enabled": false,
+        "diagnostics.undefinedProperties": false,
+        "diagnostics.run": "onSave",
         "enable": true,
         "exclude": [
           "**/.git/**",
@@ -83,7 +104,8 @@
         },
         "diagnostics": {
           "enable": false,
-          "undefinedProperties": true
+          "undefinedProperties": true,
+          "include_warnings": false
         }
       }
     }
