@@ -7,107 +7,251 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "show_edit_predictions": false,
+  "completions": {
+    "lsp": true
+  },
   "edit_predictions": {
-    "disabled_globs": [],
-    "mode": "eager",
     "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null,
-      "enterprise_uri": null
+      "prediction_debounce": 65
     },
-    "enabled_in_text_threads": false
+    "allow_data_collection": "no",
+    "ollama": {
+      "api_url": "http://localhost:11434"
+    },
+    "provider": "zed"
   },
-  "features": {
-    "edit_prediction_provider": "copilot"
+  "agent_servers": {
+    "antigravity-acp": {
+      "default_config_options": {
+        "thinking_level": "low",
+        "model": "gemini-3.6-flash-low"
+      },
+      "type": "registry"
+    }
   },
+  "diagnostics": {
+    "include_warnings": false,
+    "button": false
+  },
+  "enable_language_server": true,
+  "git_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "file_icons": true,
+    "button": false,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "debugger": {
+    "log_dap_communications": false,
+    "format_dap_log_messages": false,
+  },
+  "proxy": "",
   "agent": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+    "threads_sidebar": {
+      "position": "right"
     },
+    "enable_feedback": false,
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^dart\\b"
+            },
+            {
+              "pattern": "^head\\b"
+            },
+            {
+              "pattern": "^echo\\b"
+            },
+            {
+              "pattern": "^grep\\b"
+            },
+            {
+              "pattern": "^printf\\s+n---(\\s|$)"
+            },
+            {
+              "pattern": "^find\\s+/home/jlvv/\\.local/share/zed/languages(\\s|$)"
+            },
+            {
+              "pattern": "^rg\\b"
+            },
+            {
+              "pattern": "^cat\\s+/home/jlvv/\\.local/share/zed/extensions/installed/vue/extension\\.toml(\\s|$)"
+            },
+            {
+              "pattern": "^cat\\s+/home/jlvv/\\.local/share/zed/extensions/installed/php/extension\\.toml(\\s|$)"
+            },
+            {
+              "pattern": "^find\\s+\\.(\\s|$)"
+            }
+          ],
+        },
+        "fetch": {
+          "default": "allow",
+        },
+      },
+    },
+    "sandbox_permissions": {
+      "write_paths": [
+        {
+          "requested": "/home/jlvv/Downloads/flutter/bin/cache",
+          "resolved": "/home/jlvv/Downloads/flutter/bin/cache",
+        },
+        {
+          "requested": "/home/jlvv/fvm/versions/3.24.3/bin/cache",
+          "resolved": "/home/jlvv/fvm/versions/3.24.3/bin/cache",
+        },
+      ],
+      "network_hosts": [
+        "github.com",
+        "laravel.com",
+        "api.github.com",
+        "zed.dev",
+        "registry.npmjs.org"
+      ],
+    },
+    "default_profile": "write",
+    "button": true,
+    "default_model": {
+      "effort": "medium",
+      "provider": "openai-subscribed",
+      "model": "gpt-6.1-sol",
+      "enable_thinking": true,
+    },
+    "dock": "right",
+    "favorite_models": [
+      {
+        "provider": "google",
+        "model": "gemini-3.6-flash",
+        "enable_thinking": true,
+        "effort": "minimal"
+      },
+      {
+        "provider": "deepseek",
+        "model": "deepseek-v4-flash",
+        "enable_thinking": true,
+        "effort": "low"
+      },
+      {
+        "provider": "anthropic",
+        "model": "claude-sonnet-4-6",
+        "enable_thinking": true,
+        "effort": "low"
+      },
+      {
+        "provider": "openai-subscribed",
+        "model": "gpt-6-luna",
+        "enable_thinking": true,
+        "effort": "low"
+      }
+    ],
     "model_parameters": [],
-    "always_allow_tool_actions": true
   },
-  "telemetry": {
-    "metrics": false,
-    "diagnostics": false
+  "disable_ai": false,
+  "project_panel": {
+    "dock": "left",
   },
-  "file_scan_exclusions": [
-    ".git/",
-    "vendor/",
-    "node_modules/",
-    "tests/fixtures/"
-  ],
   "icon_theme": "Material Icon Theme",
-  "vim_mode": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false,
+  },
+  "base_keymap": "VSCode",
   "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "buffer_font_size": 15,
   "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Gruvbox Dark Hard"
+    "mode": "dark",
+    "light": "One Dark",
+    "dark": "Gruvbox Dark",
   },
   "languages": {
     "PHP": {
       "show_edit_predictions": true,
-      "language_servers": ["!intelephense","phpactor"]
+      "language_servers": ["intelephense", "!phpactor"]
     },
     "JavaScript": {
-      "language_servers": ["eslint"],
-      "enable_language_server": false
+      "language_servers": [
+        "vtsls"
+      ],
+      "enable_language_server": true
     },
     "CSS": {
-      "enable_language_server": false
-    }
+      "enable_language_server": false,
+    },
+    "TypeScript": {
+      "language_servers": [
+        "vtsls"
+      ],
+      "enable_language_server": true
+    },
   },
   "indent_guides": {
     "enabled": true,
-    "coloring": "indent_aware"
+    "coloring": "indent_aware",
   },
   "cursor_blink": true,
   "soft_wrap": "editor_width",
   "format_on_save": "off",
   "file_types": {
-    "Blade": ["*.blade.php"]
+    "Blade": ["*.blade.php"],
   },
   "lsp": {
-    "phpactor":{
+    "phpactor": {
       "initialization_options": {
-        "language_server_phpstan.mem_limit":"1G",
+        "language_server_phpstan.mem_limit": "1G",
         "language_server.diagnostics_on_update": false,
         "language_server_highlight.enabled": false,
-        "indexer.exclude_patterns": ["/vendor/**/Tests/**/*","/vendor/**/tests/**/*","/var/cache/**/*","/vendor/composer/**/*"]
-      }
+        "indexer.exclude_patterns": [
+          "/vendor/**/Tests/**/*",
+          "/vendor/**/tests/**/*",
+          "/var/cache/**/*",
+          "/vendor/composer/**/*",
+        ],
+      },
     },
     "intelephense": {
       "settings": {
-        "environment": {
-          "phpVersion": "8.2.0"
-        },
-        "maxMemory": 256,
-        "telemetry.enabled": false,
-        "diagnostics.undefinedProperties": false,
-        "diagnostics.run": "onSave",
-        "enable": true,
-        "exclude": [
-          "**/.git/**",
-          "**/node_modules/**",
-          "**/vendor/**",
-          "**/vendors/**"
-        ],
-        "format": {
-          "enable": true
-        },
-        "codeAction": {
-          "enable": true
-        },
-        "diagnostics": {
-          "enable": false,
-          "undefinedProperties": true,
-          "include_warnings": false
+        "intelephense": {
+          "environment": {
+            "phpVersion": "8.3.0"
+          },
+          "files": {
+            "exclude": [
+              "**/.git/**",
+              "**/.svn/**",
+              "**/.hg/**",
+              "**/CVS/**",
+              "**/.DS_Store/**",
+              "**/node_modules/**",
+              "**/bower_components/**",
+              "**/.history/**",
+              "**/storage/**",
+              "**/bootstrap/cache/**",
+              "**/vendor/**/{Tests,tests}/**",
+              "**/vendor/**/vendor/**"
+            ]
+          },
+          "diagnostics": {
+            "enable": true,
+            "run": "onSave",
+            "undefinedProperties": false
+          },
+          "completion": {
+            "maxItems": 100
+          },
+          "format": {
+            "enable": true
+          },
+          "telemetry": {
+            "enabled": false
+          }
         }
-      }
-    }
-  }
+      },
+    },
+  },
 }
